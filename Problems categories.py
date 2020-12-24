@@ -113,6 +113,7 @@ def main():
     replace_with_category(classified)
     print(classified.head())
     print(classified['Problem category (MEDICAL / SURGICAL / TRAUMA / TRANSPLANTATION / OBSTETRICS)'].unique())
+    classified.to_excel(r'Problems Categories Classified.xlsx', index=False)
 
     """ Code for xlsx """
     # excel = openpyxl.load_workbook('problems categories.xlsx', data_only=True)
