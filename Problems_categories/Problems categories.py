@@ -89,7 +89,7 @@ def handle_colors(book, sheet):
 
 
 def clean_list_10000():
-    list_10000 = pd.read_excel('problems categories.xlsx', sheet_name='list_10000')
+    list_10000 = pd.read_excel('problems categories_new_09.1.xlsx', sheet_name='Sheet1')
     list_10000 = list_10000[list_10000['ProblemText'].notna()]
     list_10000 = list_10000[list_10000['ProblemText'] != "ד"]
 
