@@ -105,44 +105,5 @@ plb['protein_day4'].plot(kind='bar')
 # In[ ]:
 
 
-lest=lest.dropna(how='all')
-
-
-# In[92]:
-
-
-def clean_dataset(df):
-    assert isinstance(df, pd.DataFrame), "df needs to be a pd.DataFrame"
-    df.dropna(inplace=True)
-    indices_to_keep = ~df.isin([np.nan, np.inf, -np.inf]).any(1)
-    return df[indices_to_keep].astype(np.float64)
-lest0=clean_dataset(lest.iloc[:, 1:17])
-lest0.head()
-
-
-# In[94]:
-
-
-
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(lest0.iloc[:, 1:17],lest.iloc[:, 18],test_size=0.2,random_state=4)
-
-
-# In[95]:
-
-
-
-knn = KNeighborsClassifier(80)
-knn.fit(X_train,y_train)
-y_prob = knn.predict_proba(X_test)[:,1] # This will give you positive class prediction probabilities  
-y_pred = np.where(y_prob > 0.5, 1, 0) # This will threshold the probabilities to give class predictions.
-print("Train score before PCA",knn.score(X_train,y_train),"%")
-print("Test score before PCA",knn.score(X_test,y_test),"%")
-
-
-# In[ ]:
-
-
 
 
